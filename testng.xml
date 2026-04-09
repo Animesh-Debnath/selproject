@@ -1,0 +1,53 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite 
+    name="Full Test Suite"
+    verbose="1"
+    parallel="tests"
+    thread-count="3"
+    data-provider-thread-count="0"
+    preserve-order="true">
+
+    <!-- ========== SUITE LEVEL PARAMETERS ========== -->
+    <parameter name="browser" value="chrome"/>
+    <parameter name="environment" value="qa"/>
+
+    <!-- ========== LISTENERS (e.g., Allure, Retry) ========== -->
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="listeners.RetryListener"/>
+    </listeners>
+
+    <!-- ========== TEST 1 ========== -->
+    <test name="Login Module Tests">
+
+        <!-- TEST LEVEL PARAMETER -->
+        <!-- <parameter name="browser" value="firefox"/> -->
+
+        <!-- GROUP EXECUTION -->
+        <!-- <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="regression"/>
+                <exclude name="skip"/>
+            </run>
+        </groups> -->
+
+        <classes>
+
+            <class name="tests.LoginTest">
+
+                <!-- METHOD LEVEL CONTROL
+                <methods>
+                    <include name="validLoginTest"/>
+                    <include name="invalidLoginTest"/>
+                    <exclude name="skipThisTest"/>
+                </methods> -->
+
+            </class>
+
+        </classes>
+
+    </test>
+
+</suite>
