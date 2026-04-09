@@ -12,12 +12,6 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="environment" value="qa"/>
 
-    <!-- ========== LISTENERS (e.g., Allure, Retry) ========== -->
-    <listeners>
-        <listener class-name="listeners.TestListener"/>
-        <listener class-name="listeners.RetryListener"/>
-    </listeners>
-
     <!-- ========== TEST 1 ========== -->
     <test name="Login Module Tests">
 
@@ -35,7 +29,7 @@
 
         <classes>
 
-            <class name="tests.LoginTest">
+            <class name="googleTests.GoogleTest">
 
                 <!-- METHOD LEVEL CONTROL
                 <methods>

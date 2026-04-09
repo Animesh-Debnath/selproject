@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-chrome-node
+spec:
+  replicas: 2 # Scale this up for more parallel testing
+  selector:
+    matchLabels:
+      app: selenium-chrome-node
+  template:
+    metadata:
+      labels:
+        app: selenium-chrome-node
+    spec:
+      containers:
+      - name: selenium-chrome-node
+        image: selenium/node-chrome:latest
+        env:
+          - name: SE_EVENT_BUS_HOST
+            value: "selenium-hub"
+          - name: SE_EVENT_BUS_PUBLISH_PORT
+            value: "4442"
+          - name: SE_EVENT_BUS_SUBSCRIBE_PORT
+            value: "4443"
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "1"
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
