@@ -1,0 +1,16 @@
+# Ignore log files
+*.log
+
+# Ignore build directory
+/target/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+.vscode
+/spark
+*Extent.html
+.github/
+
+# Ignore specific file
+# Ignore environment variable files
