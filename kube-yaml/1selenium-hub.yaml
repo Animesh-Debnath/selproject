@@ -26,6 +26,13 @@ spec:
          requests:
            memory: "256Mi"
            cpu: "250m"
+        volumeMounts:
+        - mountPath: /dev/shm
+          name: dshm 
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory      
 ---
 apiVersion: v1
 kind: Service

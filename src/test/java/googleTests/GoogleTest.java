@@ -1,6 +1,6 @@
 package googleTests;
-import java.time.Duration;
 
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
@@ -11,22 +11,21 @@ import org.testng.asserts.SoftAssert;
 
 import driver.DriverFactory;
 import driver.DriverManager;
-import pages.LoginPage;
+import pages.AmazonHomePage;
+import utilities.WindowUtil;
 
 public class GoogleTest {
 
     private static final Logger log = LoggerFactory.getLogger(GoogleTest.class);
-    @Test(description = "This test verifies that the Google homepage loads successfully.")
-    public void testGoogleHomePage() throws InterruptedException {
+    @Test(description = "This test verifies that the Amazon homepage loads successfully.")
+    public void testAmazonHomePage() throws InterruptedException {
         // Test implementation goes here
-        LoginPage loginPage = new LoginPage().init();
-        DriverManager.getDriver().get("https://www.amazon.com");
-        log.info("Google homepage loaded successfully.");
-        SoftAssert softAssert = new SoftAssert();// Wait for the page to load completely
-        String deliveryLocation = loginPage.getAllLabel();
-        log.info("all label text: " + deliveryLocation);
-        softAssert.assertTrue(true, "Google homepage should load successfully.");
-        Thread.sleep(8000);
+        AmazonHomePage homePage = new AmazonHomePage().init();
+        WindowUtil.getWebpage(DriverManager.getDriver(), "https://www.amazon.com");
+        SoftAssert softAssert = new SoftAssert();
+        WebElement logo = homePage.getAmazonLogo();
+        softAssert.assertNotNull(logo, "Amazon logo should be present on the homepage.");
+        log.info("Amazon homepage loaded successfully");
         softAssert.assertAll();
     }
 

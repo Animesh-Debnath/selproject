@@ -26,23 +26,25 @@ public class DriverFactory {
                options.addArguments("--disable-gpu");
                options.addArguments("--window-size=1920,1080");
                options.addArguments("--remote-allow-origins=*");
+               options.addArguments("--start-maximized");
+               options.setScriptTimeout(Duration.of(60, ChronoUnit.SECONDS));
+               options.setPageLoadTimeout(Duration.ofSeconds(60));
                driver = new RemoteWebDriver(new URL(hubURL), options);
                
            } else if (browser.equalsIgnoreCase("firefox")) {
                FirefoxOptions options = new FirefoxOptions();
-               options.setScriptTimeout(Duration.of(5, ChronoUnit.SECONDS));
-               options.setPageLoadTimeout(Duration.ofSeconds(5));
+               options.setScriptTimeout(Duration.of(60, ChronoUnit.SECONDS));
+               options.setPageLoadTimeout(Duration.ofSeconds(60));
                driver = new RemoteWebDriver(new URL(hubURL), options);
 
            } else {
                throw new IllegalArgumentException("Unsupported browser: " + browser);
            }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
             DriverManager.setDriver(driver);    
          }
         } catch (MalformedURLException e) {
-           e.printStackTrace();
+            throw new RuntimeException("Failed to initialize WebDriver: " + e.getMessage());
         }
 
     }
