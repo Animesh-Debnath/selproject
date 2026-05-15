@@ -11,6 +11,7 @@ Thumbs.db
 /spark
 *Extent.html
 .github/
+reports/
 
 # Ignore specific file
 # Ignore environment variable files

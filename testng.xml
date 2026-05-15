@@ -12,6 +12,11 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="environment" value="qa"/>
 
+    <!---Listeners -->
+    <listeners>
+        <listener class-name="listeners.ExtentListener"/>
+    </listeners>
+
     <!-- ========== TEST 1 ========== -->
     <test name="Login Module Tests">
 

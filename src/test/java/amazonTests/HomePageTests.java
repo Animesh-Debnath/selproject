@@ -1,4 +1,4 @@
-package googleTests;
+package amazonTests;
 
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -14,14 +14,14 @@ import driver.DriverManager;
 import pages.AmazonHomePage;
 import utilities.WindowUtil;
 
-public class GoogleTest {
+public class HomePageTests {
 
-    private static final Logger log = LoggerFactory.getLogger(GoogleTest.class);
+    private static final Logger log = LoggerFactory.getLogger(HomePageTests.class);
     @Test(description = "This test verifies that the Amazon homepage loads successfully.")
     public void testAmazonHomePage() throws InterruptedException {
         // Test implementation goes here
         AmazonHomePage homePage = new AmazonHomePage().init();
-        WindowUtil.getWebpage(DriverManager.getDriver(), "https://www.amazon.com");
+        WindowUtil.getWebpage(DriverManager.getDriver(), "https://www.amazon.in");
         SoftAssert softAssert = new SoftAssert();
         WebElement logo = homePage.getAmazonLogo();
         softAssert.assertNotNull(logo, "Amazon logo should be present on the homepage.");

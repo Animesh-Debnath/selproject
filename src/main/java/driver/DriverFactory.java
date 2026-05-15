@@ -27,6 +27,9 @@ public class DriverFactory {
                options.addArguments("--window-size=1920,1080");
                options.addArguments("--remote-allow-origins=*");
                options.addArguments("--start-maximized");
+               options.addArguments("--headless=new");
+               options.addArguments("--disable-extensions");
+               options.addArguments("--disable-popup-blocking");
                options.setScriptTimeout(Duration.of(60, ChronoUnit.SECONDS));
                options.setPageLoadTimeout(Duration.ofSeconds(60));
                driver = new RemoteWebDriver(new URL(hubURL), options);
