@@ -1,0 +1,14 @@
+{
+    "loginButton": {
+        "type": "ACCESIBILITY_ID",
+        "value": "Login"
+    },
+    "usernameField": {
+        "type": "ID",
+        "value": "username"
+    },
+    "passwordField": {
+        "type": "ID",
+        "value": "password"
+    }
+}

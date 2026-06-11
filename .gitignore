@@ -11,6 +11,11 @@ Thumbs.db
 /spark
 *Extent.html
 .github/
+<<<<<<< HEAD
+allure*/
+=======
+reports/
+>>>>>>> c272aaa7a7f5440cf62b292f0aca5d828d1e1684
 
 # Ignore specific file
 # Ignore environment variable files

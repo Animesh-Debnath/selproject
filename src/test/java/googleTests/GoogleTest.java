@@ -1,31 +1,35 @@
 package googleTests;
-import java.time.Duration;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import base.BaseTest;
 import driver.DriverFactory;
 import driver.DriverManager;
-import pages.LoginPage;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import listeners.AllureListener;
+import pages.AmazonHomePage;
 
-public class GoogleTest {
+@Listeners({AllureListener.class})
+public class GoogleTest extends BaseTest{
 
-    private static final Logger log = LoggerFactory.getLogger(GoogleTest.class);
+    
     @Test(description = "This test verifies that the Google homepage loads successfully.")
+    @Step("get All Label")
+    @Severity(SeverityLevel.CRITICAL)
     public void testGoogleHomePage() throws InterruptedException {
         // Test implementation goes here
-        LoginPage loginPage = new LoginPage().init();
+        AmazonHomePage loginPage = new AmazonHomePage().init();
         DriverManager.getDriver().get("https://www.amazon.com");
         log.info("Google homepage loaded successfully.");
         SoftAssert softAssert = new SoftAssert();// Wait for the page to load completely
         String deliveryLocation = loginPage.getAllLabel();
         log.info("all label text: " + deliveryLocation);
-        softAssert.assertTrue(true, "Google homepage should load successfully.");
+        softAssert.assertTrue(false, "Google homepage should load successfully.");
         Thread.sleep(8000);
         softAssert.assertAll();
     }
@@ -34,11 +38,4 @@ public class GoogleTest {
     public void tearDown(){
         DriverFactory.quitDriver();
     }
-
-    @BeforeTest(alwaysRun=true)
-    @Parameters("browser")
-    public void printParameters(String browser) {
-       log.info("Initiating driver for browser: " + browser);
-       DriverFactory.initDriver(browser); 
-    }  
 }

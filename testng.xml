@@ -11,6 +11,14 @@
     <!-- ========== SUITE LEVEL PARAMETERS ========== -->
     <parameter name="browser" value="chrome"/>
     <parameter name="environment" value="qa"/>
+    <listeners>
+        <listener class-name="listeners.AllureListener"/>
+    </listeners>
+
+    <!---Listeners -->
+    <listeners>
+        <listener class-name="listeners.ExtentListener"/>
+    </listeners>
 
     <!-- ========== TEST 1 ========== -->
     <test name="Login Module Tests">
